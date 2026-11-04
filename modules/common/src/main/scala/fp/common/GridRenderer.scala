@@ -137,7 +137,8 @@ object GridRenderer:
       .configure(settingsFor(grid, cellSize, scale), LoopFrequency.Never)
       .run() : Unit
 
-/** Demo: `sbt common/runMain fp.common.showGridDemo` */
+// TODO 03 bis, Demo: `sbt common/runMain fp.common.showGridDemo`
+
 @main def showGridDemo(): Unit =
   GridRenderer.show(
     Cell.parse(

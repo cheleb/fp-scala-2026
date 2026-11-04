@@ -14,9 +14,11 @@ trait AStar:
 
   def isDone: Boolean = status != Status.Running
 
+  // Hint: use grid for border
   def neighbours(pos: Position): Seq[Position] =
     ??? // TODO 03
 
+  // Hint: Use comeFrom
   def pathTo(pos: Position): List[Position] =
     ??? // TODO 04
 

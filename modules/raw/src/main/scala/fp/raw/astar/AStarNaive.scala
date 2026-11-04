@@ -23,14 +23,23 @@ final case class AStarNaive(
     grid: Grid[Cell],
     start: Position,
     target: Position,
+    /** Position to visit in that order */
     open: Seq[Position],
+    /** Map Current -> Previous */
     cameFrom: Map[Position, Position],
+    /** Already visited position */
     closed: Set[Position],
     current: Option[Position],
     status: Status
 ) extends AStar:
 
-  /** Expands the best node of the frontier. */
+  /** Expands the best node of the frontier.
+   * 
+   *  3 cases:
+   *  - open is empty (or already visited) -> Status.NoPath
+   *  - target is reached -> Status.Found
+   *  - need to recurse...
+   */
   def step: AStar =
     ??? // TODO 05
 

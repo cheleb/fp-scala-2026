@@ -55,5 +55,7 @@ object Grid:
   def fill[A](n: Int, p: Int)(value: => A): Grid[A] =
     Grid(Dimension(n, p), Vector.fill(n, p)(value))
 
+     // TODO 01
+     // Hint: Leverages Vector#tabulate
   def tabulate[A](n: Int, p: Int)(f: Position => A): Grid[A] =
-    ??? // TODO 01
+    ???
