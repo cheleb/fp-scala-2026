@@ -84,7 +84,7 @@ object AStarApp extends StarAppDefault:
             println("Window closed before the search ended")
 
   
-
+// TODO 07 (run)
 @main def allStarDemo(): Unit =
   val manhattan = AStar(AStarApp.maze, (grid, start, target) => AStarManathan(grid, start, target))
   val naive = AStar(AStarApp.maze, (grid, start, target) => AStarNaive(grid, start, target))
@@ -104,6 +104,7 @@ object AStarApp extends StarAppDefault:
     yield (),
     Duration.Inf
   ) : Unit
+// TODO 06
 @main def naiveStarDemo(): Unit =
   val naive = AStar(AStarApp.maze, (grid, start, target) => AStarNaive(grid, start, target))
 

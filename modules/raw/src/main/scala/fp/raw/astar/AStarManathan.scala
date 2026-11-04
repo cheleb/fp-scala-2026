@@ -44,7 +44,33 @@ final case class AStarManathan(
 
   /** Expands the best node of the frontier. */
   def step: AStar =
-    ??? // TODO 06
+    if isDone then this
+    else
+      // Skip entries made stale by a later, better path to the same position.
+      open.dropWhile(n => closed(n.pos)) match
+        case fresh if fresh.isEmpty =>
+          copy(open = fresh, current = None, status = Status.NoPath)
+        case fresh =>
+          val node = fresh.head
+          val rest = fresh - node
+          val pos = node.pos
+          if pos == target then
+            copy(
+              open = rest,
+              closed = closed + pos,
+              current = Some(pos),
+              status = Status.Found(pathTo(pos))
+            )
+          else
+            val cost = g(pos) + 1
+            val improved = neighbours(pos).filter(n => !closed(n) && g.get(n).forall(cost < _))
+            copy(
+              open = rest ++ improved.map(n => Node(cost + heuristic(n), heuristic(n), n)),
+              g = g ++ improved.map(_ -> cost),
+              cameFrom = cameFrom ++ improved.map(_ -> pos),
+              closed = closed + pos,
+              current = Some(pos)
+            )
 
 
 object AStarManathan:
